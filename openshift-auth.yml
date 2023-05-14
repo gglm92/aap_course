@@ -1,0 +1,7 @@
+- hosts: localhost
+  tasks:
+    - name: Log in (obtain access token)
+      redhat.openshift.openshift_auth:
+        username: admin
+        password: admin
+      register: openshift_auth_results
