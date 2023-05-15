@@ -1,2 +1,2 @@
 collections:
-  - name: cloud.aws_ops
+  - name: redhat.openshift
