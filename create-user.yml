@@ -1,0 +1,35 @@
+---
+- name: Ansible Create user functionlity module demo
+  hosts: all
+  tasks:
+    - name: Add the user 'Adam Listek' with a specific uid and a primary group of 'sudo'
+      user:
+        name: adamlis
+        comment: AdamListek
+        uid: 1077
+        group: sudo
+        password: passdefault
+        createhome: yes 
+        home: /home/adamlis
+
+    - name: Add group "editor" to remote node
+      group:
+        name: qa_editor
+        gid: 2212
+        state: present
+
+    - name: Add the user 'Rochella' with a bash shell, appending the group 'editor' to the user's groups
+      user:
+        name: rochella
+        shell: /bin/bash
+        groups: qa_editor
+        password: passdefault
+        append: yes
+ 
+    - name: Remove the user 'Shanky' if present in the linux system
+      user:
+        name: shanky3
+        state: absent
+        password: passdefault
+        remove: yes
+
