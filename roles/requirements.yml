@@ -1,0 +1,4 @@
+---
+roles:
+  - name: geerlingguy.apache
+    src: https://github.com/geerlingguy/ansible-role-apache
