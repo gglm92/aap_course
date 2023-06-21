@@ -3,3 +3,21 @@
     - vars/main.yml
   roles:
     - { role: geerlingguy.apache }
+
+  pre_tasks:
+    - name: Fetch galaxy roles from requirements.(yml/yaml)
+      ansible.builtin.command: >
+        ansible-galaxy role install -r {{ item }}
+        --roles-path {{ projects_root }}/.__awx_cache/{{ local_path }}/stage/requirements_roles
+        {{ ' -' + 'v' * ansible_verbosity if ansible_verbosity else '' }}
+      args:
+        chdir: "{{ project_path | quote }}"
+      register: galaxy_result
+      with_fileglob:
+        - "{{ project_path | quote }}/roles/requirements.yaml"
+        - "{{ project_path | quote }}/roles/requirements.yml"
+      changed_when: "'was installed successfully' in galaxy_result.stdout"
+      environment: "{{ galaxy_task_env }}"
+      when: roles_enabled | bool
+      tags:
+        - install_roles
