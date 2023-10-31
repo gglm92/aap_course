@@ -1,5 +1,4 @@
 collections:
   - name: redhat.openshift
-  - name: community.windows
   - name: community.general
   - name: cyberark.pas
