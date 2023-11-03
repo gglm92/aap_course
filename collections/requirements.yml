@@ -1,4 +1,4 @@
 collections:
   - name: redhat.openshift
   - name: cyberark.pas
-  - name: bac.windows
+  - name: bac.windows:1.0.0
