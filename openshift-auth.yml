@@ -10,4 +10,6 @@
   - name: Pause for 5 minutes to build app cache
     ansible.builtin.pause:
       minutes: 5
-
+  roles:
+    - role: ../requirements_collections/ansible_collections/bac/windows/roles/mi_prueba
+      nombre: Gary
