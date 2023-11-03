@@ -8,5 +8,5 @@
 #
 
   roles:
-    - role: miprueba
+    - role: ../requirements_collections/ansible_collections/bac/windows/roles/miprueba/
       nombre: Gary
