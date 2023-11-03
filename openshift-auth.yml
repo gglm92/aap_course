@@ -6,6 +6,10 @@
 #        password: admin
 #      register: openshift_auth_results
 #
+  pre_tasks:
+  - name: Pause for 5 minutes to build app cache
+    ansible.builtin.pause:
+      minutes: 5
   roles:
     - role: bac.windows
       nombre: Gary
